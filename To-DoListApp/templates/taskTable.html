@@ -1,0 +1,38 @@
+<div class="container-fluid  pb-2">
+    <table class="table " style="text-align: center;">
+      <thead>
+        <tr>
+          <th scope="col">Sr. No.</th>
+          <th scope="col">Task</th>
+          <th scope="col">Task Description</th>
+          <th scope="col">Date & Time</th>
+          <th scope="col">Category</th>
+          <th scope="col">Edit</th>
+          <th scope="col">Cancel</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+        {% if show_task and active_table %} 
+        
+          {% for i in show_task %}
+           {% if i %}
+        <tr> 
+          
+          <td><b> {{ loop.index }} </b></td>
+          <td>{{ i.get("inputTaskName") }} </td>
+          <td> {{ i.get("inputTaskDescription") }} </td>
+          <td>  {{ i.get("inputDate") }} | {{ i.get("inputTime") }} </td>
+          <td> {{ i.get("inputCategory") }}  </td>
+          <td><button type="button" class="btn btn-update" onclick="window.location.href='http://127.0.0.1:5000/updateTask/{{ i._id }}/{{ active_table }}'"
+            method="POST">Edit</button></td>
+          
+          <td><button type="submit" class="btn btn-delete" method="POST" onclick="window.location.href='http://127.0.0.1:5000/deleteTask/{{ i._id }}/{{ active_table }}'">Cancel</button></td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+   {% endif %}
+             
+      </tbody>
+    </table>
+  </div>

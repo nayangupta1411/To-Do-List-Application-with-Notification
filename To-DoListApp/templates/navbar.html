@@ -1,0 +1,38 @@
+<div class="container-fluid">
+<nav class=" navbar navbar-expand-sm navbar-dark bg-dark row" >
+    <div class="col-lg-9 pl-5">
+        <div class="navbar-brand">📃To-Do List</div>
+
+    </div>
+    <div class="col-lg-3">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+ 
+            <div class="my-2 my-lg-0">
+              <ul class="navbar-nav ">
+                  <li class="nav-item">
+                    <a class="nav-link  {% if active_section == 'view_task' %} active {% endif %} " href="{{ url_for('view_task') }}">View Task</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link  {% if active_section == 'add_task' %} active {% endif %} " href="{{ url_for('add_task') }}">Add Task</a>
+                  </li>
+                  
+                  <div class="notification-icon">
+                  <li class="nav-item">
+                    <a class="nav-link  {% if active_section == 'notification_task' %} active {% endif %} " id="#notificationsModal" data-b-toggle="modal" href="{{ url_for('notification_task') }}">
+                      Notification
+                     {% if notification_count %}
+                     <span class="notification-count">{{ notification_count }}</span>
+                     {% endif %}
+                    </a>
+                  </li>
+                  </div>
+                </ul>
+             
+            </div>
+          </div>
+    </div> 
+</nav>
+</div>

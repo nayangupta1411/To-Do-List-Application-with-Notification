@@ -1,0 +1,63 @@
+
+ <div class="container-fluid ">
+    <div class="container-fluid pt-5 ">
+ <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <a class="nav-link {% if active_table == 'all_task' %} active {% endif %}" id="allTask-tab"  data-target="#allTask"  role="tab" href="{{ url_for('all_task') }}" >All Task</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link {% if active_table == 'default_task' %} active {% endif %}" id="defaultTask-tab"  role="tab"  data-target="#defaultTask" href="{{ url_for('default_task') }}">Default</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-link {% if active_table == 'personal_task' %} active {% endif %}" id="personalTask-tab"  data-target="#personalTask"  role="tab" href="{{ url_for('personal_task') }}">Personal</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link {% if active_table == 'shopping_task' %} active {% endif %}" id="shoppingTask-tab"  data-target="#shoppingTask" type="button" role="tab" href="{{ url_for('shopping_task') }}">Shopping</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link {% if active_table == 'wishlist_task' %} active {% endif %}" id="wishlistTask-tab"  data-target="#wishlistTask" type="button" role="tab" href="{{ url_for('wishlist_task') }}" >Wishlist</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link {% if active_table == 'work_task' %} active {% endif %}" id="workTask-tab"  data-target="#workTask" type="button" role="tab" href="{{ url_for('work_task') }}" >Work</a>
+      </li>
+  </ul>
+</div>
+
+
+  <div class="tab-content" id="myTabContent">
+    {% if active_table == 'all_task' %}
+    <div class="tab-pane fade show active" id="allTask" role="tabpanel" aria-labelledby="allTask-tab">
+       {% include 'taskTable.html' %}
+        
+    </div>
+    {% elif active_table == 'default_task' %}
+    <div class="tab-pane fade show active" id="defaultTask" role="tabpanel" aria-labelledby="defaultTask-tab">
+        {% include 'taskTable.html' %}
+    </div>
+
+    {% elif active_table == 'personal_task' %}
+    
+    <div class="tab-pane fade show active" id="personalTask" role="tabpanel" aria-labelledby="personalTask-tab">
+        {% include 'taskTable.html' %}
+    </div>
+
+    {% elif active_table == 'shopping_task' %}
+
+    <div class="tab-pane fade show active" id="shoppingTask" role="tabpanel" aria-labelledby="shoppingTask-tab">
+        {% include 'taskTable.html' %}
+    </div>
+
+    {% elif active_table == 'wishlist_task' %}
+    <div class="tab-pane fade show active" id="wishlistTask" role="tabpanel" aria-labelledby="wishlistTask-tab">
+        {% include 'taskTable.html' %}
+    </div>
+
+    {% elif active_table == 'work_task' %}
+    <div class="tab-pane fade show active" id="workTask" role="tabpanel" aria-labelledby="workTask-tab">
+        {% include 'taskTable.html' %}
+    </div>
+
+    {% endif %}
+  </div>
+
+  <div>

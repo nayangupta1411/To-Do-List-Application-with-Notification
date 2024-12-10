@@ -1,0 +1,46 @@
+
+{% if popup_notifications %}
+    {% if notifications %}  
+    {% for task in notifications %}
+    {% if (task.deadline == 'overdue') %}
+   
+   setTimeout(function() {
+    Swal.fire({
+        toast: true,
+        position: 'bottom-end',
+        title: "task overdue : {{ task.inputTaskName }}",
+        icon: "error",
+        showConfirmButton:false,
+        timer: 1000,
+        timerProgressBar:true,
+        didOpen: (toast)=> {
+            toast.classList.add('swal2-toast');
+        }
+       
+    });
+   },1000*{{ loop.index }})
+    
+    
+       {% endif %}
+       {% if (task.deadline == 'upcoming') %}
+            
+       setTimeout(function() {
+        Swal.fire({
+            toast: true,
+            position: 'bottom-end',
+            title: "task upcoming : {{ task.inputTaskName }}",
+            icon: "warning",
+            showConfirmButton:false,
+            timer: 1000,
+            timerProgressBar:true,
+            didOpen: (toast)=> {
+                toast.classList.add('swal2-toast2');
+            }
+           
+        });
+       },1000*{{ loop.index }})
+
+       {% endif %}
+       {% endfor %}
+       {% endif %}
+{% endif %}

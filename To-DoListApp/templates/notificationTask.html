@@ -1,0 +1,36 @@
+
+
+<div class="container-fluid col-lg-8 ">
+            <div class="modal-body ">
+                {% if notifications %}
+                <ul class="list-group">
+                    {% for task in notifications %}
+                    <li class="list-group-item m-1 {% if task.deadline == 'overdue' %}overdue_task_deadline{% else %}upcoming_task_deadline{% endif %}">
+                       <div class="container-fluid">
+                         <div class="row">
+                           <div class="col-lg-6">
+                            <div class="inputTaskName">{{ task.inputTaskName }}</div>
+                            <!-- <code class="inputTaskDescription">{{ task.inputTaskDescription }}</code> -->
+                            <b>Deadline:</b> <span class="inputTaskDeadline">📅{{ task.inputDate }} ⌛{{ task.inputTime }}</span>
+                           </div>
+                           <div class="col-lg-3">
+                            <div class="pt-3 {% if task.deadline == 'overdue' %}overdue_deadline{% else %}upcoming_deadline{% endif %}">
+                            {{ task.deadline }}</div>
+                           </div>
+                           <div class="col-lg-3">
+                            <button type="button" class="mt-3 btn btn-success" onclick="window.location.href='http://127.0.0.1:5000/deleteNotification/{{ task._id }}'">mark as done</button>
+                           </div>
+                         </div> 
+                        </div>
+                    </li>
+                   
+                    {% endfor %}
+                </ul>
+
+                {% else %}
+                <p>No upcoming deadlines within the next hour.</p>
+                {% endif %}
+            </div>
+         
+</div>
+
